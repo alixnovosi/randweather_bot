@@ -10,7 +10,7 @@ import send
 import util
 
 # Delay between tweets in seconds.
-DELAY = 3600
+DELAY = 2600
 DELAY_VARIATION = 600
 
 if __name__ == "__main__":
