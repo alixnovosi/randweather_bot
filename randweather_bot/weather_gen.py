@@ -44,8 +44,6 @@ def produce_status():
         return "It is {}% cloudy in {}.".format(cloudiness, place_name)
 
     elif thing == WeatherThings.SUNRISE or thing == WeatherThings.SUNSET:
-        LOG.info("Producing a status on the sunrise.")
-
         if thing == WeatherThings.SUNRISE:
             LOG.info("Producing a status on the sunrise.")
             sunthing_time = json["sys"]["sunrise"]
