@@ -22,6 +22,6 @@ setup(author="Andrew Michaud",
       packages=find_packages(),
 
       # Project"s main homepage
-      url="https://github.com/andrewmichaud/randomweather_bot",
+      url="https://github.com/andrewmichaud/randweather_bot",
 
       version=VERSION)

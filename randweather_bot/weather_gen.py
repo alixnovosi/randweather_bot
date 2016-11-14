@@ -14,8 +14,8 @@ with open("api_key", "r") as f:
     API_KEY = f.read().strip()
 
 
-OWNER_URL = "https://github.com/andrewmichaud/randomweather_bot"
-USER_AGENT = "randomweather_twitterbot/1.0.0" + OWNER_URL
+OWNER_URL = "https://github.com/andrewmichaud/randweather_bot"
+USER_AGENT = "randweather_twitterbot/1.0.0" + OWNER_URL
 HEADERS = {"User-Agent": USER_AGENT}
 
 LOG = logging.getLogger("root")
