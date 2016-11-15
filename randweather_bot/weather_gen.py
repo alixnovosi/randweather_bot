@@ -110,7 +110,7 @@ def get_zip_url(zip):
     return "{}?zip={},us&appid={}".format(WEATHER_ROOT, zip, API_KEY)
 
 
-@util.rate_limited(10)
+@util.rate_limited(1800)
 def openweathermap_api_call(url):
     """Perform a rate-limited API call."""
     return requests.get(url)

@@ -10,7 +10,7 @@ import send
 import util
 
 # Delay between tweets in seconds.
-DELAY = 2600
+DELAY = 1800
 DELAY_VARIATION = 600
 
 if __name__ == "__main__":
@@ -26,6 +26,10 @@ if __name__ == "__main__":
             api.update_status(weather)
 
         except tweepy.TweepError as e:
+            if e.message == "Status is a duplicate.":
+                LOG.warning("Duplicate status.")
+                continue
+
             LOG.critical("A Tweepy error we don't know how to handle happened.")
             LOG.critical("Error reason: {}".format(e.reason))
             LOG.critical("Exiting.")
