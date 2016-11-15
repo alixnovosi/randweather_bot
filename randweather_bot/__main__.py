@@ -21,6 +21,7 @@ if __name__ == "__main__":
     while True:
         LOG.info("Sending a weather tweet.")
         weather = weather_gen.produce_status()
+        LOG.info("Sending:\n %s", weather)
 
         try:
             api.update_status(weather)
