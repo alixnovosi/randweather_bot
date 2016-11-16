@@ -1,5 +1,6 @@
 """Utils for this bot."""
 import logging
+import os
 import sys
 import time
 import random
@@ -8,6 +9,9 @@ from logging.handlers import RotatingFileHandler
 LOG = logging.getLogger("root")
 
 LAST_CALLED = {}
+
+with open(os.path.join("..", "VERSION"), "r") as f:
+    VERSION = f.read().strip()
 
 
 def set_up_logging():

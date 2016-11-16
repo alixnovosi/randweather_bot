@@ -15,7 +15,7 @@ with open("api_key", "r") as f:
 
 
 OWNER_URL = "https://github.com/andrewmichaud/randweather_bot"
-USER_AGENT = "randweather_twitterbot/1.0.0" + OWNER_URL
+USER_AGENT = "randweather_twitterbot/" + util.VERSION + "(" + OWNER_URL + ")"
 HEADERS = {"User-Agent": USER_AGENT}
 
 LOG = logging.getLogger("root")
@@ -56,20 +56,19 @@ def windspeed_handle(place_name, json):
     # Either show in m/s or mph.
     if random.choice([True, False]):
         return random.choice([
-            "The current wind speed in {} is {} meters/second.".format(place_name, wind_speed),
-            "The wind speed in {} is currently {} m/s.".format(place_name, wind_speed),
-            "The wind speed in {} is {} m/s at this moment.".format(place_name, wind_speed),
-        ])
+            "The current wind speed in {} is {} meters/second.",
+            "The wind speed in {} is currently {} m/s.",
+            "The wind speed in {} is {} m/s at this moment.",
+        ]).format(place_name, wind_speed)
 
     else:
         # Close enough?
         imperial_speed = round(wind_speed * 2.237, 2)
         return random.choice([
-            "The current wind speed in {} is {} miles per hour.".format(place_name,
-                                                                        imperial_speed),
-            "The wind speed in {} is {} mph.".format(place_name, imperial_speed),
-            "The wind speed in {} is {} mph, last I checked.".format(place_name, imperial_speed),
-        ])
+            "The current wind speed in {} is {} miles per hour.",
+            "The wind speed in {} is {} mph.",
+            "The wind speed in {} is {} mph, last I checked.",
+        ]).format(place_name, imperial_speed)
 
 
 def cloudiness_handle(place_name, json):
@@ -91,61 +90,46 @@ def cloudiness_handle(place_name, json):
         # Clear/Sunny - 0/8 okta.
         if cloudiness < 12.5:
             return random.choice([
-                "It's clear in {} right now ({}% cloudiness).".format(place_name, cloudiness),
-                "There are almost no clouds in {} right now ({}% cloudiness).".format(place_name,
-                                                                                      cloudiness),
-                "Good luck finding clouds in {} right now ({}% cloudiness).".format(place_name,
-                                                                                    cloudiness),
-            ])
+                "It's clear in {} right now ({}% cloudiness).",
+                "There are almost no clouds in {} right now ({}% cloudiness).",
+                "Good luck finding clouds in {} right now ({}% cloudiness).",
+            ]).format(place_name, cloudiness)
 
         # Mostly Clear/Mostly Sunny - 1/8 to 2.5/8 okta.
         elif cloudiness >= 12.5 and cloudiness < 31.25:
             return random.choice([
-                "It's not very cloudy in {} right now ({}% cloudiness).".format(place_name,
-                                                                                cloudiness),
-                "There are not many clouds in {} right now ({}% cloudiness).".format(place_name,
-                                                                                     cloudiness),
-                "It's very clear in {} right now ({}% cloudiness).".format(place_name, cloudiness),
-                "It's mostly clear in {} right now ({}% cloudiness).".format(place_name,
-                                                                             cloudiness),
-            ])
+                "It's not very cloudy in {} right now ({}% cloudiness).",
+                "There are not many clouds in {} right now ({}% cloudiness).",
+                "It's very clear in {} right now ({}% cloudiness).",
+                "It's mostly clear in {} right now ({}% cloudiness).",
+            ]).format(place_name, cloudiness)
 
         # Partly Cloudy/Partly Sunny - 2.5/8 to 4.5/8 okta.
         elif cloudiness >= 31.25 and cloudiness < 56.25:
             return random.choice([
-                "It's kinda cloudy in {} right now ({}% cloudiness).".format(place_name,
-                                                                             cloudiness),
-                "There are a few clouds in {} right now ({}% cloudiness).".format(place_name,
-                                                                                  cloudiness),
-                "It's partly clear in {} right now ({}% cloudiness).".format(place_name,
-                                                                             cloudiness),
-                "It's partly cloudy in {} right now ({}% cloudiness).".format(place_name,
-                                                                              cloudiness),
-            ])
+                "It's kinda cloudy in {} right now ({}% cloudiness).",
+                "There are a few clouds in {} right now ({}% cloudiness).",
+                "It's partly clear in {} right now ({}% cloudiness).",
+                "It's partly cloudy in {} right now ({}% cloudiness).",
+            ]).format(place_name, cloudiness)
 
         # Mostly Cloudy/Considerable Cloudiness - 4.5/8 to 7.5/8 okta.
         elif cloudiness >= 56.25 and cloudiness < 93.75:
             return random.choice([
-                "It's very cloudy in {} right now ({}% cloudiness).".format(place_name,
-                                                                            cloudiness),
-                "It's mostly cloudy in {} right now ({}% cloudiness).".format(place_name,
-                                                                              cloudiness),
-                "There are a bunch of clouds in {} right now ({}% cloudiness).".format(place_name,
-                                                                                       cloudiness),
-                "It's not very clear in {} right now ({}% cloudiness).".format(place_name,
-                                                                               cloudiness),
-                "Wow! There are a lot of clouds in {} right now ({}% cloudiness).".format(
-                    place_name, cloudiness),
-            ])
+                "It's very cloudy in {} right now ({}% cloudiness).",
+                "It's mostly cloudy in {} right now ({}% cloudiness).",
+                "There are a bunch of clouds in {} right now ({}% cloudiness).",
+                "It's not very clear in {} right now ({}% cloudiness).",
+                "Wow! There are a lot of clouds in {} right now ({}% cloudiness).",
+            ]).format(place_name, cloudiness)
 
         # Cloudy - 7.5/8 okta to 8/8 okta.
         else:
             return random.choice([
-                "It's cloudy in {} right now ({}% cloudiness).".format(place_name, cloudiness),
-                "It's not clear in {} right now ({}% cloudiness).".format(place_name, cloudiness),
-                "There are a ton of clouds in {} right now ({}% cloudiness).".format(place_name,
-                                                                                     cloudiness),
-            ])
+                "It's cloudy in {} right now ({}% cloudiness).",
+                "It's not clear in {} right now ({}% cloudiness).",
+                "There are a ton of clouds in {} right now ({}% cloudiness).",
+            ]).format(place_name, cloudiness)
 
 
 def humidity_handle(place_name, json):
@@ -163,21 +147,21 @@ def humidity_handle(place_name, json):
     else:
         if humidity < 40:
             return random.choice([
-                "It is very dry in {} right now ({}% humidity).".format(place_name, humidity),
-                "It's very dry in {} ({}% humidity).".format(place_name, humidity),
-            ])
+                "It is very dry in {} right now ({}% humidity).",
+                "It's very dry in {} ({}% humidity).",
+            ]).format(place_name, humidity)
 
         elif humidity >= 40 and humidity < 75:
             return random.choice([
-                "It's mildly humid in {} ({}% humid).".format(place_name, humidity),
-                "It's kinda wet in {} ({}% humid).".format(place_name, humidity),
-            ])
+                "It's mildly humid in {} ({}% humid).",
+                "It's kinda wet in {} ({}% humid).",
+            ]).format(place_name, humidity)
 
         else:
             return random.choice([
-                "It's very humid in {} ({}% humid).".format(place_name, humidity),
-                "It's quite wet in {} right now ({}% humid).".format(place_name, humidity),
-            ])
+                "It's very humid in {} ({}% humid).",
+                "It's quite wet in {} right now ({}% humid).",
+            ]).format(place_name, humidity)
 
 
 def temp_handle(place_name, json):
@@ -227,11 +211,9 @@ def sunthing_handle(thing, place_name, json):
 
     else:
         return random.choice([
-            "The next {} in {} will happen at {} UTC.".format(sunthing, place_name,
-                                                              formatted_datetime),
-            "You could watch the {} in {} at {} UTC.".format(sunthing, place_name,
-                                                             formatted_datetime),
-        ])
+            "The next {} in {} will happen at {} UTC.",
+            "You could watch the {} in {} at {} UTC.",
+        ]).format(sunthing, place_name, formatted_datetime)
 
 
 # Wrappers around Open Weather Map API, to get weather info.
