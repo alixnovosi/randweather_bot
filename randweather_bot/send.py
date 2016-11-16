@@ -4,11 +4,13 @@ import os
 
 import tweepy
 
+import util
+
 
 def auth_and_get_api():
     """Authenticate with twitter and get access to API."""
     # auth auth auth auth
-    SECRETS_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), "SECRETS")
+    SECRETS_DIR = os.path.join(util.HERE, "SECRETS")
 
     with open(os.path.join(SECRETS_DIR, "CONSUMER_KEY")) as f:
         CONSUMER_KEY = f.read().strip()

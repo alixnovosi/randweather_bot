@@ -5,12 +5,17 @@ import sys
 import time
 import random
 from logging.handlers import RotatingFileHandler
+from os import path
+
+import util
 
 LOG = logging.getLogger("root")
 
 LAST_CALLED = {}
 
-with open(os.path.join("..", "VERSION"), "r") as f:
+HERE = path.abspath(path.dirname(__file__))
+
+with open(os.path.join(HERE, "..", "VERSION"), "r") as f:
     VERSION = f.read().strip()
 
 
@@ -78,7 +83,7 @@ def random_line(file_path):
     # Fancy alg from http://stackoverflow.com/a/35579149 to avoid loading full file.
     line_num = 0
     selected_line = ""
-    with open(file_path) as f:
+    with open(os.path.join(util.HERE, file_path)) as f:
         while 1:
             line = f.readline()
             if not line:

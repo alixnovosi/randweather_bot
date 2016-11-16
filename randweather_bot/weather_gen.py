@@ -1,4 +1,5 @@
 import logging
+import os
 import random
 from datetime import datetime, timedelta
 from enum import Enum
@@ -10,7 +11,7 @@ import util
 
 WEATHER_ROOT = "http://api.openweathermap.org/data/2.5/weather"
 
-with open("api_key", "r") as f:
+with open(os.path.join(util.HERE, "api_key"), "r") as f:
     API_KEY = f.read().strip()
 
 
