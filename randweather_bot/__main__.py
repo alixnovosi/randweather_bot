@@ -7,8 +7,6 @@ import time
 import botskeleton
 
 import weather_gen
-import tweepy
-import util
 
 # Delay between tweets in seconds.
 DELAY = 1800
@@ -18,7 +16,7 @@ if __name__ == "__main__":
     SECRETS_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), "SECRETS")
     api = botskeleton.BotSkeleton(SECRETS_DIR, bot_name="randweather_bot")
 
-    LOG = util.set_up_logging()
+    LOG = botskeleton.set_up_logging()
 
     while True:
         LOG.info("Sending a weather tweet.")
