@@ -18,6 +18,7 @@ setup(author="Andrew Michaud",
       license="BSD3",
 
       name="randomweather_bot",
+      requires="python>=3.6.0".
 
       packages=find_packages(),
 
