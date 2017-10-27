@@ -1,5 +1,6 @@
 """Main class to run randomweather_bot."""
 
+import random
 import time
 from os import path
 
