@@ -5,6 +5,7 @@ import time
 from os import path
 
 import botskeleton
+import tweepy
 
 import weather_gen
 
@@ -14,7 +15,7 @@ DELAY_VARIATION = 600
 
 if __name__ == "__main__":
     SECRETS_DIR = path.join(path.abspath(path.dirname(__file__)), "SECRETS")
-    api = botskeleton.BotSkeleton(SECRETS_DIR, bot_name="randweather_bot")
+    BOT_SKELETON = botskeleton.BotSkeleton(SECRETS_DIR, bot_name="randweather_bot")
 
     LOG = botskeleton.set_up_logging()
 
@@ -23,22 +24,13 @@ if __name__ == "__main__":
         try:
             weather = weather_gen.produce_status()
         except Exception as e:
-            api.send_dm_sos(f"Bot {api.bot_name} had an error it can't recover from!\n{e}")
+            BOT_SKELETON.send_dm_sos(f"Bot {BOT_SKELETON.bot_name} " +\
+                                     f"had an error it can't recover from!\n{e}")
             raise
 
         LOG.info(f"Sending:\n {weather}")
 
-        try:
-            api.send(weather)
+        BOT_SKELETON.send(weather)
 
-        except tweepy.TweepError as e:
-            if e.message == "Status is a duplicate.":
-                LOG.warning("Duplicate status.")
-                continue
-            else:
-                api.send_dm_sos(f"Bot {api.bot_name} had an error it can't recover from!\n{e}")
-                raise
-
-        FINAL_DELAY = random.choice(range(DELAY-DELAY_VARIATION, DELAY+DELAY_VARIATION+1))
-        LOG.info(f"Sleeping for {FINAL_DELAY} seconds.")
-        time.sleep(FINAL_DELAY)
+        BOT_SKELETON.delay = random.choice(range(DELAY-DELAY_VARIATION, DELAY+DELAY_VARIATION+1))
+        BOT_SKELETON.nap()
