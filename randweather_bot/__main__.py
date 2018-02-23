@@ -1,7 +1,6 @@
 """Main class to run randomweather_bot."""
 
 import random
-import time
 from os import path
 
 import weatherbotskeleton
@@ -17,7 +16,7 @@ if __name__ == "__main__":
         owner_url="https://github.com/andrewmichaud/randweather_bot",
         bot_name="randweather_bot")
 
-    LOG = weatherbotskeleton.set_up_logging()
+    LOG = BOT_SKELETON.log
 
     while True:
         LOG.info("Sending a weather tweet.")
