@@ -1,5 +1,5 @@
 # randweather_bot
-bot tweeting random weather
+bot sending random weather
 
 Powers https://twitter.com/randweather_bot
 
