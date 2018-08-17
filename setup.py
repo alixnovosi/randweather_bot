@@ -13,7 +13,7 @@ setup(author="Andrew Michaud",
           "console_scripts": ["randomweather_bot = randomweather_bot.__main__:main"]
       },
 
-      install_requires=["weatherbotskeleton>=1.1.0", "requests>=2.19.1"],
+      install_requires=["weatherbotskeleton>=1.1.0"],
 
       license="BSD3",
 
