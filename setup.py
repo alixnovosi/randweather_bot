@@ -13,7 +13,7 @@ setup(author="Andrew Michaud",
           "console_scripts": ["randomweather_bot = randomweather_bot.__main__:main"]
       },
 
-      install_requires=["weatherbotskeleton>=1.1.0"],
+      install_requires=["weatherbotskeleton>=1.4.0"],
 
       license="BSD3",
 
@@ -23,6 +23,6 @@ setup(author="Andrew Michaud",
       packages=find_packages(),
 
       # Project"s main homepage
-      url="https://github.com/andrewmichaud/randweather_bot",
+      url="https://github.com/alixnovosi/randweather_bot",
 
       version=VERSION)
