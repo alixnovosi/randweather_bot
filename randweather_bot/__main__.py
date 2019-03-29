@@ -6,15 +6,17 @@ from os import path
 import weatherbotskeleton
 
 # Delay between tweets in seconds.
-DELAY = 1800
-DELAY_VARIATION = 600
+DELAY = 3600
+DELAY_VARIATION = 300
 
 if __name__ == "__main__":
     SECRETS_DIR = path.join(path.abspath(path.dirname(__file__)), "SECRETS")
     BOT_SKELETON = weatherbotskeleton.WeatherbotSkeleton(
-        SECRETS_DIR,
+        secrets_dir=SECRETS_DIR,
         owner_url="https://github.com/andrewmichaud/randweather_bot",
-        bot_name="randweather_bot")
+        bot_name="randweather_bot",
+        cities_file=path.join(SECRETS_DIR, "city.list.json"),
+    )
 
     LOG = BOT_SKELETON.log
 
