@@ -13,7 +13,7 @@ if __name__ == "__main__":
     SECRETS_DIR = path.join(path.abspath(path.dirname(__file__)), "SECRETS")
     BOT_SKELETON = weatherbotskeleton.WeatherbotSkeleton(
         secrets_dir=SECRETS_DIR,
-        owner_url="https://github.com/andrewmichaud/randweather_bot",
+        owner_url="https://github.com/alixnovosi/randweather_bot",
         bot_name="randweather_bot",
         cities_file=path.join(SECRETS_DIR, "city.list.json"),
     )
